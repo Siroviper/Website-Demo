@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viper's Blog</title>
+    <style>
+        :root {
+            --bg-color: #1c1f24;
+            --text-color: #c5c8c6;
+            --accent-blue: #23b0ff;
+            --accent-green: #23b0ff;
+            --accent-yellow: #f0c674;
+            --accent-purple: #b294bb;
+            --header-bg: #23b0ff;
+            --link-color: #c5c8c6;
+            --code-bg: #282a2e;
+        }
+
+        @font-face {
+            font-family: 'lucidagrande';
+            src: url('Fonts/lucidagrande.ttf') format('truetype');
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('Images/Background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-color);
+            font-family: 'lucidagrande', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .theme-badge {
+            background-color: var(--header-bg);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .header-line {
+            color: var(--accent-blue);
+            display: inline-block;
+        }
+
+        nav {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #23b0ff;
+            text-decoration: none;
+            border-bottom: 1px solid #23b0ff;
+        }
+
+        .home-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .left-column,
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .home-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--accent-blue);
+            padding: 20px;
+            min-height: 200px;
+            transition: border-color 0.3s;
+        }
+
+        .home-box:hover {
+            border-color: var(--accent-yellow);
+        }
+
+        .box-title {
+            color: var(--accent-blue);
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .box-content {
+            color: var(--text-color);
+        }
+
+        .box-content a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .box-content a:hover {
+            text-decoration: underline;
+        }
+
+        .blog-meta {
+            color: var(--accent-yellow);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .art-image {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .art-image:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .home-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    |</span>
+            </div>
+            <nav>
+                <a href="index.html" class="active">Home</a>
+                <a href="fiction.html">Fiction</a>
+                <a href="art.html">Art</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About me</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="home-grid">
+                <div class="left-column">
+                    <!-- Latest Blog Entry -->
+                    <div class="home-box">
+                        <div class="box-title">Latest Blog Entry</div>
+                        <div class="box-content">
+                            <div class="blog-meta">> 2025-11-19</div>
+                            <a href="example-blog-post.html">My First Blog Post - Getting Started</a>
+                            <p style="margin-top: 10px; font-size: 0.9em;">This is a sample excerpt from the latest blog
+                                post. Replace this with actual content from your most recent blog entry...</p>
+                        </div>
+                    </div>
+
+                    <!-- Second Latest Blog Entry -->
+                    <div class="home-box">
+                        <div class="box-title">Second Latest Blog Entry</div>
+                        <div class="box-content">
+                            <div class="blog-meta">> 2025-11-18</div>
+                            <a href="#">Previous Blog Post Title</a>
+                            <p style="margin-top: 10px; font-size: 0.9em;">This is a sample excerpt from the second
+                                latest blog post. Replace with actual content...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <!-- Random Art -->
+                    <div class="home-box">
+                        <div class="box-title">Random Art</div>
+                        <div class="box-content">
+                            <a href="art.html">
+                                <img src="https://picsum.photos/400/300?random=10" alt="Random Art" class="art-image">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Latest Novel Chapter -->
+                    <div class="home-box">
+                        <div class="box-title">Latest Novel Chapter</div>
+                        <div class="box-content">
+                            <a href="novel.html">I Remember Your Face. Do You Remember Mine?</a>
+                            <p style="margin-top: 10px; font-size: 0.9em;">Chapter 12 - Latest update</p>
+                            <p style="margin-top: 10px; font-size: 0.85em; font-style: italic;">Click to continue
+                                reading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        :root {
+            --bg-color: #1c1f24;
+            --text-color: #c5c8c6;
+            --accent-blue: #23b0ff;
+            --accent-green: #23b0ff;
+            --accent-yellow: #f0c674;
+            --accent-purple: #b294bb;
+            --header-bg: #23b0ff;
+            --link-color: #c5c8c6;
+            --code-bg: #282a2e;
+        }
+
+        @font-face {
+            font-family: 'lucidagrande';
+            src: url('Fonts/lucidagrande.ttf') format('truetype');
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('Images/Background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-color);
+            font-family: 'lucidagrande', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .theme-badge {
+            background-color: var(--header-bg);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .header-line {
+            color: var(--accent-blue);
+            display: inline-block;
+        }
+
+        nav {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #23b0ff;
+            text-decoration: none;
+            border-bottom: 1px solid #23b0ff;
+        }
+
+        h1 {
+            color: var(--accent-blue);
+            font-weight: normal;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+
+        .dashed-line {
+            border-top: 1px dashed var(--accent-blue);
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .about-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--accent-blue);
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 1px solid var(--accent-blue);
+            flex-shrink: 0;
+        }
+
+        .fav-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .fav-link:hover {
+            color: #23b0ff;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .social-link:hover {
+            color: #23b0ff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    |</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="fiction.html">Fiction</a>
+                <a href="art.html">Art</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html" class="active">About me</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1>About me</h1>
+            <div class="dashed-line"></div>
+
+            <div class="about-box">
+                <div class="about-text">
+                    <p>You can call me Kieran, but I go by Viper among my friends and WantedOutlaw on AO3.</p>
+                    <p>I like to write stories and draw, sometimes.</p>
+                    <p>I had an interest in writing since I was a middle school but never wrote anything of substance
+                        until I turned 20. I wrote a shitty Skyrim fanfic once (and I lost it) when I was younger, I
+                        think it was 20 pages long or something, and as one might expect it
+                        was abysmal, to put it lightly.</p>
+                    <p>It was cringe and shit but I remember I had fun wrriting it, so I decided to try again, but this
+                        time I wanted to write a whole preject from start to finsih. and as it turned out, I'm actully
+                        enjoying it. Hell, I'm loving it.</p>
+                    <p>I never considerd myself to be the artistic or creative type, but I always loved creating things
+                        and spent the better half of my childhood trying differant crafts and tinckering with things.
+                        Most went no
+                        where, but I would be lying if I said I didn't enjoy every moment of it.</p>
+                    <div class="social-links">
+                        <a href="https://x.com/NotWantedOutlaw" class="social-link">Twitter</a>
+                        <a href="https://archiveofourown.org/users/WantedOutlaw" class="social-link">AO3</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="Images/pfp.jpg" alt="Viper's Profile Picture" class="about-image">
+                    <a href="favourites.html" class="fav-link">Favourites</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

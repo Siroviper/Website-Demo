@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        :root {
+            --bg-color: #1c1f24;
+            --text-color: #c5c8c6;
+            --accent-blue: #23b0ff;
+            --accent-green: #23b0ff;
+            --accent-yellow: #f0c674;
+            --accent-purple: #b294bb;
+            --header-bg: #23b0ff;
+            --link-color: #c5c8c6;
+            --code-bg: #282a2e;
+        }
+
+        @font-face {
+            font-family: 'lucidagrande';
+            src: url('Fonts/lucidagrande.ttf') format('truetype');
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('Images/Background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-color);
+            font-family: 'lucidagrande', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .theme-badge {
+            background-color: var(--header-bg);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .header-line {
+            color: var(--accent-blue);
+            display: inline-block;
+        }
+
+        nav {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #23b0ff;
+            text-decoration: none;
+            border-bottom: 1px solid #23b0ff;
+        }
+
+        h1 {
+            color: var(--accent-blue);
+            font-weight: normal;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+
+        .dashed-line {
+            border-top: 1px dashed var(--accent-blue);
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .meta {
+            color: var(--accent-blue);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            color: var(--text-color);
+            text-decoration: underline;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    |</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="fiction.html">Fiction</a>
+                <a href="art.html">Art</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="about.html">About me</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Blog</h1>
+            <p style="color: var(--text-color); margin-top: -10px; margin-bottom: 20px; font-style: italic;">Journals
+                entries and random thoughts</p>
+            <div class="dashed-line"></div>
+
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;">
+                    <span style="color: var(--accent-blue); margin-right: 10px;">> 2025-11-19:</span>
+                    <a href="example-blog-post.html" style="color: var(--link-color); text-decoration: underline;">My
+                        First Blog Post - Getting Started</a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</body>
+
+</html>

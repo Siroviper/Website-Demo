@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourites</title>
+    <style>
+        :root {
+            --bg-color: #1c1f24;
+            --text-color: #c5c8c6;
+            --accent-blue: #23b0ff;
+            --accent-green: #23b0ff;
+            --accent-yellow: #f0c674;
+            --accent-purple: #b294bb;
+            --header-bg: #23b0ff;
+            --link-color: #c5c8c6;
+            --code-bg: #282a2e;
+        }
+
+        @font-face {
+            font-family: 'lucidagrande';
+            src: url('Fonts/lucidagrande.ttf') format('truetype');
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('Images/Background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-color);
+            font-family: 'lucidagrande', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .theme-badge {
+            background-color: var(--header-bg);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .header-line {
+            color: var(--accent-blue);
+            display: inline-block;
+        }
+
+        nav {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #23b0ff;
+            text-decoration: none;
+            border-bottom: 1px solid #23b0ff;
+        }
+
+        h1 {
+            color: var(--accent-blue);
+            font-weight: normal;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+
+        h2 {
+            color: var(--accent-yellow);
+            font-weight: normal;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        .dashed-line {
+            border-top: 1px dashed var(--accent-blue);
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .favourites-section {
+            margin-bottom: 40px;
+        }
+
+        .fav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .fav-item {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .fav-item-name {
+            color: var(--accent-yellow);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .fav-item img {
+            width: 100%;
+            max-width: 250px;
+            height: 375px;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .fav-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .fav-item-description {
+            color: var(--text-color);
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            margin-top: 40px;
+            display: inline-block;
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    |</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="fiction.html">Fiction</a>
+                <a href="art.html">Art</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About me</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Favourites</h1>
+            <div class="dashed-line"></div>
+
+            <div class="favourites-section">
+                <h2>Games</h2>
+                <div class="fav-grid">
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Game 1</div>
+                        <img src="https://pbs.twimg.com/media/G6DrW_ibMAIpPBC?format=jpg" alt="Game 1">
+                        <div class="fav-item-description">Amazing story and gameplay.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Game 2</div>
+                        <img src="https://picsum.photos/250/375?random=11" alt="Game 2">
+                        <div class="fav-item-description">Incredible art style and music.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Game 3</div>
+                        <img src="https://picsum.photos/250/375?random=12" alt="Game 3">
+                        <div class="fav-item-description">Best multiplayer experience ever.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favourites-section">
+                <h2>Movies</h2>
+                <div class="fav-grid">
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Movie 1</div>
+                        <img src="https://picsum.photos/250/375?random=20" alt="Movie 1">
+                        <div class="fav-item-description">A masterpiece of storytelling.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Movie 2</div>
+                        <img src="https://picsum.photos/250/375?random=21" alt="Movie 2">
+                        <div class="fav-item-description">Mind-blowing plot twist.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Movie 3</div>
+                        <img src="https://picsum.photos/250/375?random=22" alt="Movie 3">
+                        <div class="fav-item-description">Beautiful and emotional.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favourites-section">
+                <h2>Shows</h2>
+                <div class="fav-grid">
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Show 1</div>
+                        <img src="https://picsum.photos/250/375?random=30" alt="Show 1">
+                        <div class="fav-item-description">Amazing character development.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Show 2</div>
+                        <img src="https://picsum.photos/250/375?random=31" alt="Show 2">
+                        <div class="fav-item-description">Perfect comedy and drama blend.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Show 3</div>
+                        <img src="https://picsum.photos/250/375?random=32" alt="Show 3">
+                        <div class="fav-item-description">Edge-of-seat thriller.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favourites-section">
+                <h2>Books</h2>
+                <div class="fav-grid">
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Book 1</div>
+                        <img src="https://picsum.photos/250/375?random=40" alt="Book 1">
+                        <div class="fav-item-description">Phenomenal world-building.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Book 2</div>
+                        <img src="https://picsum.photos/250/375?random=41" alt="Book 2">
+                        <div class="fav-item-description">Beautifully written, made me cry.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Book 3</div>
+                        <img src="https://picsum.photos/250/375?random=42" alt="Book 3">
+                        <div class="fav-item-description">Life-changing perspective.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favourites-section">
+                <h2>Music</h2>
+                <div class="fav-grid">
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Artist/Album 1</div>
+                        <img src="https://picsum.photos/250/375?random=50" alt="Music 1">
+                        <div class="fav-item-description">My go-to comfort music.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Artist/Album 2</div>
+                        <img src="https://picsum.photos/250/375?random=51" alt="Music 2">
+                        <div class="fav-item-description">The lyrics speak to my soul.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Artist/Album 3</div>
+                        <img src="https://picsum.photos/250/375?random=52" alt="Music 3">
+                        <div class="fav-item-description">Perfect for every mood.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favourites-section">
+                <h2>Characters</h2>
+                <div class="fav-grid">
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Character 1</div>
+                        <img src="https://picsum.photos/250/375?random=60" alt="Character 1">
+                        <div class="fav-item-description">Relatable and inspiring protagonist.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Character 2</div>
+                        <img src="https://picsum.photos/250/375?random=61" alt="Character 2">
+                        <div class="fav-item-description">Complex villain with depth.</div>
+                    </div>
+                    <div class="fav-item">
+                        <div class="fav-item-name">Example Character 3</div>
+                        <img src="https://picsum.photos/250/375?random=62" alt="Character 3">
+                        <div class="fav-item-description">Lovable supporting character.</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="about.html" class="back-link">← Back to About</a>
+        </main>
+    </div>
+</body>
+
+</html>

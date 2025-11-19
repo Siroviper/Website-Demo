@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel</title>
+    <style>
+        :root {
+            --bg-color: #1c1f24;
+            --text-color: #c5c8c6;
+            --accent-blue: #23b0ff;
+            --accent-green: #23b0ff;
+            --accent-yellow: #f0c674;
+            --accent-purple: #23b0ff;
+            --header-bg: #23b0ff;
+            --link-color: #c5c8c6;
+            --code-bg: #282a2e;
+        }
+
+        @font-face {
+            font-family: 'lucidagrande';
+            src: url('Fonts/lucidagrande.ttf') format('truetype');
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'lucidagrande', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 40px;
+        }
+
+        .theme-badge {
+            background-color: var(--header-bg);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .header-line {
+            color: var(--accent-blue);
+            display: inline-block;
+        }
+
+        /* Navigation */
+        nav {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #23b0ff;
+            text-decoration: none;
+            border-bottom: 1px solid #23b0ff;
+        }
+
+        /* Main Content Layout */
+        .content-wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .sidebar {
+            width: 250px;
+            position: sticky;
+            top: 20px;
+            flex-shrink: 0;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .main-text-area {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        /* Main Content Elements */
+        h1 {
+            color: var(--accent-blue);
+            font-weight: normal;
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .dashed-line {
+            border-top: 1px dashed var(--accent-blue);
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .meta {
+            color: var(--accent-blue);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            color: var(--text-color);
+            text-decoration: underline;
+            margin-left: 5px;
+        }
+
+        /* Index Styling */
+        .chapter-index {
+            padding: 20px;
+            border: 1px dashed var(--accent-blue);
+            background-color: var(--bg-color);
+        }
+
+        .chapter-index h2 {
+            color: var(--accent-yellow);
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .chapter-index ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chapter-index li {
+            margin-bottom: 10px;
+        }
+
+        .chapter-index a {
+            color: var(--link-color);
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        .chapter-index a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+
+        .chapter-index a.active {
+            color: var(--accent-purple);
+            font-weight: bold;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 7px;
+        }
+
+        /* Chapter Sections */
+        .chapter-section {
+            margin-bottom: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--code-bg);
+        }
+
+        .chapter-title {
+            color: var(--accent-purple);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .next-chapter-link {
+            display: block;
+            margin-top: 30px;
+            text-align: right;
+            color: var(--accent-blue);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .next-chapter-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 40px;
+                max-height: none;
+            }
+
+            .chapter-index {
+                border: 1px solid var(--accent-blue);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    |</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="fiction.html">Fiction</a>
+                <a href="art.html">Art</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About me</a>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sidebar with sticky table of contents -->
+            <aside class="sidebar">
+                <div class="chapter-index">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#chapter1">Chapter 1 - Prologue - The Offer</a></li>
+                        <li><a href="#chapter2">Chapter 2 - The Hunt</a></li>
+                        <li><a href="#chapter3">Chapter 3 - Half-Dead</a></li>
+                        <li><a href="#chapter4">Chapter 4 - The Outlaw & The Beast</a></li>
+                        <li><a href="#chapter5">Chapter 5 - There's A House Near The Woods</a></li>
+                        <li><a href="#chapter6">Chapter 6 - I Like Your Name</a></li>
+                        <li><a href="#chapter7">Chapter 7 - Back To Where It Began</a></li>
+                        <li><a href="#chapter8">Chapter 8 - A Friendly Game Of Cards</a></li>
+                        <li><a href="#chapter9">Chapter 9 - You're Not Here</a></li>
+                        <li><a href="#chapter10">Chapter 10 - Execution Road</a></li>
+                        <li><a href="#chapter11">Chapter 11 - Waiting For You</a></li>
+                        <li><a href="#chapter12">Chapter 12 - Some Stranger</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="main-text-area">
+                <h1><b>I Remember Your Face. Do You Remember Mine?</b></h1>
+                <div class="dashed-line"></div>
+
+                <div id="chapter1" class="chapter-section">
+                    <div class="chapter-title">Chapter 1 - Prologue - The Offer</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 1 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter2" class="chapter-section">
+                    <div class="chapter-title">Chapter 2 - The Hunt</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 2 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter3" class="chapter-section">
+                    <div class="chapter-title">Chapter 3 - Half-Dead</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 3 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter4" class="chapter-section">
+                    <div class="chapter-title">Chapter 4 - The Outlaw & The Beast</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 4 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter5" class="chapter-section">
+                    <div class="chapter-title">Chapter 5 - There's A House Near The Woods</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 5 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter6" class="chapter-section">
+                    <div class="chapter-title">Chapter 6 - I Like Your Name</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 6 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter7" class="chapter-section">
+                    <div class="chapter-title">Chapter 7 - Back To Where It Began</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 7 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter8" class="chapter-section">
+                    <div class="chapter-title">Chapter 8 - A Friendly Game Of Cards</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 8 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter9" class="chapter-section">
+                    <div class="chapter-title">Chapter 9 - You're Not Here</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 9 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter10" class="chapter-section">
+                    <div class="chapter-title">Chapter 10 - Execution Road</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 10 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter11" class="chapter-section">
+                    <div class="chapter-title">Chapter 11 - Waiting For You</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 11 goes here -->
+                    </div>
+                </div>
+
+                <div id="chapter12" class="chapter-section">
+                    <div class="chapter-title">Chapter 12 - Some Stranger</div>
+                    <div class="novel-text">
+                        <!-- Content for Chapter 12 goes here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Load novel content from novel.txt
+        fetch('novel.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Could not load novel.txt');
+                }
+                return response.text();
+            })
+            .then(text => {
+                // Parse the content by chapter markers
+                const chapters = text.split(/===CHAPTER(\d+)===/)
+                    .filter(content => content.trim().length > 0);
+
+                // Process each chapter
+                for (let i = 1; i <= 12; i++) {
+                    const chapterDiv = document.querySelector(`#chapter${i} .novel-text`);
+                    if (chapterDiv) {
+                        // Find the corresponding chapter content
+                        const chapterIndex = chapters.findIndex(item => item.trim() === String(i));
+                        if (chapterIndex !== -1 && chapters[chapterIndex + 1]) {
+                            const content = chapters[chapterIndex + 1].trim();
+                            // Convert plain text to paragraphs
+                            const paragraphs = content.split('\n\n')
+                                .filter(p => p.trim().length > 0)
+                                .map(p => `<p>${p.trim()}</p>`)
+                                .join('');
+                            chapterDiv.innerHTML = paragraphs;
+                        }
+                    }
+                }
+            })
+            .catch(err => {
+                console.error('Error loading novel:', err);
+                const firstChapter = document.querySelector('#chapter1 .novel-text');
+                if (firstChapter) {
+                    firstChapter.innerHTML = '<p style="color: var(--accent-yellow);">Error loading novel content. Please ensure novel.txt exists.</p>';
+                }
+            });
+    </script>
+
+    <script>
+        // Highlight current chapter in table of contents based on scroll position
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all links
+                    document.querySelectorAll('.chapter-index a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+
+                    // Add active class to current chapter link
+                    const id = entry.target.getAttribute('id');
+                    const activeLink = document.querySelector(`.chapter-index a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all chapter sections
+        document.querySelectorAll('.chapter-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>

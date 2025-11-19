@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive</title>
+    <style>
+        :root {
+            --bg-color: #1c1f24;
+            --text-color: #c5c8c6;
+            --accent-blue: #23b0ff;
+            --accent-green: #23b0ff;
+            --accent-yellow: #f0c674;
+            --accent-purple: #b294bb;
+            --header-bg: #23b0ff;
+            --link-color: #c5c8c6;
+            --code-bg: #282a2e;
+        }
+
+        @font-face {
+            font-family: 'lucidagrande';
+            src: url('Fonts/lucidagrande.ttf') format('truetype');
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('Images/Background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-color);
+            font-family: 'lucidagrande', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        .theme-badge {
+            background-color: var(--header-bg);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .header-line {
+            color: var(--accent-blue);
+            display: inline-block;
+        }
+
+        nav {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #23b0ff;
+            text-decoration: none;
+            border-bottom: 1px solid #23b0ff;
+        }
+
+        h1 {
+            color: var(--accent-blue);
+            font-weight: normal;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+
+        .dashed-line {
+            border-top: 1px dashed var(--accent-blue);
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .archive-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .archive-item {
+            overflow: hidden;
+        }
+
+        .archive-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .archive-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .fullscreen-modal.active {
+            display: flex;
+        }
+
+        .fullscreen-modal img {
+            max-width: 100%;
+            max-height: 90%;
+            object-fit: contain;
+            cursor: default;
+        }
+
+        .fullscreen-title {
+            color: var(--accent-blue);
+            font-size: 1.2em;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    |</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="fiction.html">Fiction</a>
+                <a href="art.html" class="active">Art</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About me</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Art</h1>
+            <div class="dashed-line"></div>
+
+            <div class="archive-gallery">
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=1" alt="Archive Art 1" data-title="Archive Art 1">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Archive Art 2" data-title="Archive Art 2">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Archive Art 3" data-title="Archive Art 3">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Archive Art 4" data-title="Archive Art 4">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=5" alt="Archive Art 5" data-title="Archive Art 5">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=6" alt="Archive Art 6" data-title="Archive Art 6">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=7" alt="Archive Art 7" data-title="Archive Art 7">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=8" alt="Archive Art 8" data-title="Archive Art 8">
+                </div>
+                <div class="archive-item">
+                    <img src="https://picsum.photos/400/300?random=9" alt="Archive Art 9" data-title="Archive Art 9">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div class="fullscreen-modal" id="fullscreenModal">
+        <img src="" alt="">
+        <div class="fullscreen-title" id="fullscreenTitle"></div>
+    </div>
+
+    <script>
+        // Get all archive images
+        const archiveImages = document.querySelectorAll('.archive-item img');
+        const modal = document.getElementById('fullscreenModal');
+        const modalImg = modal.querySelector('img');
+        const modalTitle = document.getElementById('fullscreenTitle');
+
+        // Add click event to each image
+        archiveImages.forEach(img => {
+            img.addEventListener('click', function () {
+                modal.classList.add('active');
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                modalTitle.textContent = this.dataset.title || this.alt;
+            });
+        });
+
+        // Close modal when clicking on it
+        modal.addEventListener('click', function () {
+            this.classList.remove('active');
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
