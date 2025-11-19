@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive</title>
+    <title>Art Archive</title>
     <style>
         :root {
             --bg-color: #1c1f24;
@@ -187,24 +187,24 @@
         </header>
 
         <main>
-            <h1>Art</h1>
+            <h1>Art Archive</h1>
             <div class="dashed-line"></div>
 
-            <!-- Single Image View -->
-            <div id="single-view" class="single-view">
+            <!-- Single Image View (Hidden by default) -->
+            <div id="single-view" class="single-view hidden">
                 <img id="current-image" src="" alt="Art">
                 <div id="image-title" class="single-title"></div>
             </div>
 
-            <!-- Controls -->
-            <div class="controls">
+            <!-- Controls (Hidden by default) -->
+            <div id="controls" class="controls hidden">
                 <button id="prev-btn" class="btn">&lt; Previous</button>
                 <button id="gallery-btn" class="btn">Gallery</button>
                 <button id="next-btn" class="btn">Next &gt;</button>
             </div>
 
-            <!-- Grid Gallery (Hidden by default) -->
-            <div id="gallery-view" class="archive-gallery hidden">
+            <!-- Grid Gallery -->
+            <div id="gallery-view" class="archive-gallery">
                 <!-- Images injected via JS -->
             </div>
         </main>
@@ -236,6 +236,8 @@
         const nextBtn = document.getElementById('next-btn');
         const galleryBtn = document.getElementById('gallery-btn');
 
+        const controls = document.getElementById('controls');
+
         function showImage(index) {
             const img = images[index];
             currentImage.src = img.src;
@@ -247,16 +249,12 @@
         function toggleView(showGallery) {
             if (showGallery) {
                 singleView.classList.add('hidden');
+                controls.classList.add('hidden');
                 galleryView.classList.remove('hidden');
-                galleryBtn.textContent = 'Back to Single View';
-                prevBtn.classList.add('hidden');
-                nextBtn.classList.add('hidden');
             } else {
                 singleView.classList.remove('hidden');
+                controls.classList.remove('hidden');
                 galleryView.classList.add('hidden');
-                galleryBtn.textContent = 'Gallery';
-                prevBtn.classList.remove('hidden');
-                nextBtn.classList.remove('hidden');
                 showImage(currentIndex);
             }
         }
@@ -292,8 +290,8 @@
             toggleView(!isGalleryVisible);
         });
 
-        // Initial Load
-        showImage(0);
+        // Initial Load - Start in Gallery View
+        toggleView(true);
     </script>
 </body>
 
