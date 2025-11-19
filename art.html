@@ -95,13 +95,14 @@
 
         .archive-gallery {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
 
         .archive-item {
             overflow: hidden;
+            border: 1px solid var(--accent-blue);
         }
 
         .archive-item img {
@@ -117,38 +118,53 @@
             transform: scale(1.05);
         }
 
-        .fullscreen-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        .fullscreen-modal.active {
+        /* Single View Styles */
+        .single-view {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
         }
 
-        .fullscreen-modal img {
+        .single-view img {
             max-width: 100%;
-            max-height: 90%;
-            object-fit: contain;
-            cursor: default;
+            max-height: 70vh;
+            border: 1px solid var(--accent-blue);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        .fullscreen-title {
+        .single-title {
+            margin-top: 15px;
             color: var(--accent-blue);
             font-size: 1.2em;
-            margin-top: 15px;
-            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'lucidagrande', monospace;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--bg-color);
+        }
+
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
@@ -174,72 +190,103 @@
             <h1>Art</h1>
             <div class="dashed-line"></div>
 
-            <div class="archive-gallery">
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=1" alt="Archive Art 1" data-title="Archive Art 1">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=2" alt="Archive Art 2" data-title="Archive Art 2">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=3" alt="Archive Art 3" data-title="Archive Art 3">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=4" alt="Archive Art 4" data-title="Archive Art 4">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=5" alt="Archive Art 5" data-title="Archive Art 5">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=6" alt="Archive Art 6" data-title="Archive Art 6">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=7" alt="Archive Art 7" data-title="Archive Art 7">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=8" alt="Archive Art 8" data-title="Archive Art 8">
-                </div>
-                <div class="archive-item">
-                    <img src="https://picsum.photos/400/300?random=9" alt="Archive Art 9" data-title="Archive Art 9">
-                </div>
+            <!-- Single Image View -->
+            <div id="single-view" class="single-view">
+                <img id="current-image" src="" alt="Art">
+                <div id="image-title" class="single-title"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button id="prev-btn" class="btn">&lt; Previous</button>
+                <button id="gallery-btn" class="btn">Gallery</button>
+                <button id="next-btn" class="btn">Next &gt;</button>
+            </div>
+
+            <!-- Grid Gallery (Hidden by default) -->
+            <div id="gallery-view" class="archive-gallery hidden">
+                <!-- Images injected via JS -->
             </div>
         </main>
     </div>
 
-    <!-- Fullscreen Modal -->
-    <div class="fullscreen-modal" id="fullscreenModal">
-        <img src="" alt="">
-        <div class="fullscreen-title" id="fullscreenTitle"></div>
-    </div>
-
     <script>
-        // Get all archive images
-        const archiveImages = document.querySelectorAll('.archive-item img');
-        const modal = document.getElementById('fullscreenModal');
-        const modalImg = modal.querySelector('img');
-        const modalTitle = document.getElementById('fullscreenTitle');
+        const images = [
+            { src: 'Art/Connor and Lillian.png', title: 'Connor and Lillian' },
+            { src: 'Art/art1.png', title: 'Art 1' },
+            { src: 'Art/batta1.png', title: 'Batta 1' },
+            { src: 'Art/batta2.png', title: 'Batta 2' },
+            { src: 'Art/doodles.png', title: 'Doodles' },
+            { src: 'Art/rok.png', title: 'Rok' }
+        ];
 
-        // Add click event to each image
-        archiveImages.forEach(img => {
-            img.addEventListener('click', function () {
-                modal.classList.add('active');
-                modalImg.src = this.src;
-                modalImg.alt = this.alt;
-                modalTitle.textContent = this.dataset.title || this.alt;
-            });
-        });
+        let currentIndex = 0;
+        const singleView = document.getElementById('single-view');
+        const galleryView = document.getElementById('gallery-view');
+        const currentImage = document.getElementById('current-image');
+        const imageTitle = document.getElementById('image-title');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const galleryBtn = document.getElementById('gallery-btn');
 
-        // Close modal when clicking on it
-        modal.addEventListener('click', function () {
-            this.classList.remove('active');
-        });
+        function showImage(index) {
+            const img = images[index];
+            currentImage.src = img.src;
+            currentImage.alt = img.title;
+            imageTitle.textContent = img.title;
+            currentIndex = index;
+        }
 
-        // Close modal with ESC key
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                modal.classList.remove('active');
+        function toggleView(showGallery) {
+            if (showGallery) {
+                singleView.classList.add('hidden');
+                galleryView.classList.remove('hidden');
+                galleryBtn.textContent = 'Back to Single View';
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+            } else {
+                singleView.classList.remove('hidden');
+                galleryView.classList.add('hidden');
+                galleryBtn.textContent = 'Gallery';
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+                showImage(currentIndex);
             }
+        }
+
+        // Initialize Gallery Grid
+        images.forEach((img, index) => {
+            const div = document.createElement('div');
+            div.className = 'archive-item';
+            const image = document.createElement('img');
+            image.src = img.src;
+            image.alt = img.title;
+            image.onclick = () => {
+                currentIndex = index;
+                toggleView(false);
+            };
+            div.appendChild(image);
+            galleryView.appendChild(div);
         });
+
+        // Event Listeners
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        galleryBtn.addEventListener('click', () => {
+            const isGalleryVisible = !galleryView.classList.contains('hidden');
+            toggleView(!isGalleryVisible);
+        });
+
+        // Initial Load
+        showImage(0);
     </script>
 </body>
 
