@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started</title>
+    <style>
+        :root {
+            --bg-color: #1c1f24;
+            --text-color: #c5c8c6;
+            --accent-blue: #23b0ff;
+            --accent-green: #23b0ff;
+            --accent-yellow: #f0c674;
+            --accent-purple: #b294bb;
+            --header-bg: #23b0ff;
+            --link-color: #c5c8c6;
+            --code-bg: #282a2e;
+        }
+
+        @font-face {
+            font-family: 'lucidagrande';
+            src: url('../Fonts/lucidagrande.ttf') format('truetype');
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('../Images/Background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-color);
+            font-family: 'lucidagrande', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 40px;
+        }
+
+        .theme-badge {
+            background-color: var(--header-bg);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .header-line {
+            color: var(--accent-blue);
+            display: inline-block;
+        }
+
+        /* Navigation */
+        nav {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #23b0ff;
+            text-decoration: none;
+            border-bottom: 1px solid #23b0ff;
+        }
+
+        /* Main Content */
+        h1 {
+            color: var(--accent-blue);
+            font-weight: normal;
+            margin-top: 40px;
+            font-size: 24px;
+        }
+
+        h2 {
+            color: var(--accent-yellow);
+            font-weight: normal;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .dashed-line {
+            border-top: 1px dashed var(--accent-blue);
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .meta {
+            color: var(--accent-blue);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .blog-content {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--accent-blue);
+            padding: 20px;
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+
+        .blog-content p {
+            margin-bottom: 15px;
+        }
+
+        .blog-content blockquote {
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 15px;
+            margin: 20px 0;
+            color: var(--accent-blue);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    |</span>
+            </div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../fiction.html">Fiction</a>
+                <a href="../art.html">Art</a>
+                <a href="../blog.html" class="active">Blog</a>
+                <a href="../about.html">About me</a>
+            </nav>
+        </header>
+
+        <main>
+            <div id="blog-post">
+                <p style="color: var(--accent-yellow);">Loading blog post...</p>
+            </div>
+
+            <div class="blog-content">
+                <div class="dashed-line"></div>
+                <p style="color: var(--accent-blue); margin-top: 20px;">
+                    <a href="../blog.html" style="color: var(--accent-blue);">← Back to Blog</a>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Fetch the blog content from external txt file
+        fetch('Getting-Started.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load blog post');
+                }
+                return response.text();
+            })
+            .then(text => {
+                // Parse markdown and inject into page
+                const blogDiv = document.getElementById('blog-post');
+
+                // Split title and content
+                const lines = text.split('\n');
+                const title = lines[0];
+                const content = lines.slice(1).join('\n');
+
+                blogDiv.innerHTML = `
+                    <h1>${title}</h1>
+                    <div class="dashed-line"></div>
+                    <div class="blog-content">
+                        ${marked.parse(content)}
+                    </div>
+                `;
+            })
+            .catch(err => {
+                console.error('Error loading blog:', err);
+                document.getElementById('blog-post').innerHTML = `
+                    <h1>Error Loading Blog Post</h1>
+                    <div class="blog-content">
+                        <p style="color: var(--accent-yellow);">
+                            Could not load blog content. Please ensure the .txt file exists and you're running this on a local server.
+                        </p>
+                    </div>
+                `;
+            });
+    </script>
+</body>
+
+</html>

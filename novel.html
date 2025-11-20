@@ -12,7 +12,7 @@
             --accent-blue: #23b0ff;
             --accent-green: #23b0ff;
             --accent-yellow: #f0c674;
-            --accent-purple: #23b0ff;
+            --accent-purple: #b294bb;
             --header-bg: #23b0ff;
             --link-color: #c5c8c6;
             --code-bg: #282a2e;
@@ -37,7 +37,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 2500px;
             margin: 0 auto;
         }
 
@@ -157,7 +157,7 @@
             text-decoration: none;
             display: block;
             padding: 5px 0;
-            transition: color 0.2s, padding-left 0.2s;
+            transition: color 0.2s;
         }
 
         .chapter-index a:hover {
@@ -170,6 +170,12 @@
             font-weight: bold;
             border-left: 3px solid var(--accent-purple);
             padding-left: 7px;
+        }
+
+        .chapter-date {
+            font-size: 0.75em;
+            color: #888;
+            margin-left: 5px;
         }
 
         /* Chapter Sections */
@@ -223,49 +229,61 @@
     <div class="container">
         <header>
             <div>
-                <span class="theme-badge">Viper's Writings & Nonsense</span>
+                <span class="theme-badge">Viper's Blog</span>
                 <span class="header-line">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
                     |</span>
             </div>
             <nav>
                 <a href="index.html">Home</a>
-                <a href="fiction.html">Fiction</a>
-                <a href="art.html">Art</a>
+                <a href="fiction.html" class="active">Fiction</a>
                 <a href="blog.html">Blog</a>
                 <a href="about.html">About me</a>
             </nav>
         </header>
 
         <div class="content-wrapper">
-            <!-- Sidebar with sticky table of contents -->
             <aside class="sidebar">
                 <div class="chapter-index">
                     <h2>Table of Contents</h2>
                     <ul>
-                        <li><a href="#chapter1">Chapter 1 - Prologue - The Offer</a></li>
-                        <li><a href="#chapter2">Chapter 2 - The Hunt</a></li>
-                        <li><a href="#chapter3">Chapter 3 - Half-Dead</a></li>
-                        <li><a href="#chapter4">Chapter 4 - The Outlaw & The Beast</a></li>
-                        <li><a href="#chapter5">Chapter 5 - There's A House Near The Woods</a></li>
-                        <li><a href="#chapter6">Chapter 6 - I Like Your Name</a></li>
-                        <li><a href="#chapter7">Chapter 7 - Back To Where It Began</a></li>
-                        <li><a href="#chapter8">Chapter 8 - A Friendly Game Of Cards</a></li>
-                        <li><a href="#chapter9">Chapter 9 - You're Not Here</a></li>
-                        <li><a href="#chapter10">Chapter 10 - Execution Road</a></li>
-                        <li><a href="#chapter11">Chapter 11 - Waiting For You</a></li>
-                        <li><a href="#chapter12">Chapter 12 - Some Stranger</a></li>
+                        <li><a href="#chapter1">Chapter 1 - Prologue - The Offer<span
+                                    class="chapter-date">(2025-06-24)</span></a></li>
+                        <li><a href="#chapter2">Chapter 2 - The Hunt<span class="chapter-date">(2025-06-24)</span></a>
+                        </li>
+                        <li><a href="#chapter3">Chapter 3 - Half-Dead<span class="chapter-date">(2025-07-02)</span></a>
+                        </li>
+                        <li><a href="#chapter4">Chapter 4 - The Outlaw & The Beast<span
+                                    class="chapter-date">(2025-07-15)</span></a></li>
+                        <li><a href="#chapter5">Chapter 5 - There's A House Near The Woods<span
+                                    class="chapter-date">(2025-07-29)</span></a></li>
+                        <li><a href="#chapter6">Chapter 6 - I Like Your Name<span
+                                    class="chapter-date">(2025-08-18)</span></a></li>
+                        <li><a href="#chapter7">Chapter 7 - Back To Where It Began<span
+                                    class="chapter-date">(2025-09-07)</span></a></li>
+                        <li><a href="#chapter8">Chapter 8 - A Friendly Game Of Cards<span
+                                    class="chapter-date">(2025-09-11)</span></a></li>
+                        <li><a href="#chapter9">Chapter 9 - You're Not Here<span
+                                    class="chapter-date">(2025-09-17)</span></a></li>
+                        <li><a href="#chapter10">Chapter 10 - Execution Road<span
+                                    class="chapter-date">(2025-10-07)</span></a></li>
+                        <li><a href="#chapter11">Chapter 11 - Waiting For You<span
+                                    class="chapter-date">(2025-10-24)</span></a></li>
+                        <li><a href="#chapter12">Chapter 12 - Some Stranger<span
+                                    class="chapter-date">(2025-11-15)</span></a></li>
                     </ul>
                 </div>
             </aside>
 
             <main class="main-text-area">
-                <h1><b>I Remember Your Face. Do You Remember Mine?</b></h1>
+                <h1><b> I Remember Your Face. Do You Remember Mine?</b>
+                </h1>
                 <div class="dashed-line"></div>
 
                 <div id="chapter1" class="chapter-section">
                     <div class="chapter-title">Chapter 1 - Prologue - The Offer</div>
                     <div class="novel-text">
                         <!-- Content for Chapter 1 goes here -->
+
                     </div>
                 </div>
 
@@ -344,17 +362,18 @@
                     <div class="novel-text">
                         <!-- Content for Chapter 12 goes here -->
                     </div>
+                    <a href="#" class="next-chapter-link">Back to Top</a>
                 </div>
             </main>
         </div>
     </div>
 
     <script>
-        // Load novel content from novel.txt
+        // Fetch the novel content from the external txt file
         fetch('novel.txt')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Could not load novel.txt');
+                    throw new Error('Failed to load novel.txt');
                 }
                 return response.text();
             })
@@ -383,15 +402,16 @@
             })
             .catch(err => {
                 console.error('Error loading novel:', err);
+                // Optional: Show error message in the first chapter
                 const firstChapter = document.querySelector('#chapter1 .novel-text');
                 if (firstChapter) {
-                    firstChapter.innerHTML = '<p style="color: var(--accent-yellow);">Error loading novel content. Please ensure novel.txt exists.</p>';
+                    firstChapter.innerHTML = '<p style="color: var(--accent-yellow);">Error loading novel content. Please ensure novel.txt exists and you are running this on a local server.</p>';
                 }
             });
     </script>
 
     <script>
-        // Highlight current chapter in table of contents based on scroll position
+        // Highlight current chapter in table of contents
         const observerOptions = {
             root: null,
             rootMargin: '-20% 0px -70% 0px',

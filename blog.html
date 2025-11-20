@@ -130,11 +130,34 @@
                 entries and random thoughts</p>
             <div class="dashed-line"></div>
 
+            <!-- 
+                HOW TO ADD A NEW BLOG POST:
+                1. Create your-post-name.html and your-post-name.txt in the blogs/ folder
+                2. Copy example-blog-post.html as a template
+                3. Update the fetch() line in the .html file to fetch('your-post-name.txt')
+                4. Add a new <li> entry below like the examples
+                
+                Format: 
+                <li style="margin-bottom: 10px;">
+                    <span style="color: var(--accent-blue); margin-right: 10px;">> YYYY-MM-DD:</span>
+                    <a href="blogs/your-post-name.html" style="color: var(--link-color); text-decoration: underline;">
+                        Your Post Title
+                    </a>
+                </li>
+            -->
             <ul style="list-style: none; padding: 0;">
                 <li style="margin-bottom: 10px;">
+                    <span style="color: var(--accent-blue); margin-right: 10px;">> 2025-11-20:</span>
+                    <a href="blogs/new-blog.html" style="color: var(--link-color); text-decoration: underline;">
+                        New Blog Post
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
                     <span style="color: var(--accent-blue); margin-right: 10px;">> 2025-11-19:</span>
-                    <a href="example-blog-post.html" style="color: var(--link-color); text-decoration: underline;">My
-                        First Blog Post - Getting Started</a>
+                    <a href="blogs/Getting-Started.html"
+                        style="color: var(--link-color); text-decoration: underline;">
+                        Getting Started
+                    </a>
                 </li>
             </ul>
         </main>
